@@ -64,13 +64,13 @@ export default function NavBar() {
                 className="bg-primary menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52"
               >
                 <li>
-                  <NavLink to="/">Home</NavLink>
+                  <NavLink to="/my-foods">My Foods</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/all-foods">All Foods</NavLink>
+                  <NavLink to="/add-food">Add food</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/gallery">Gallery</NavLink>
+                  <NavLink to="/my-orders">My Orders</NavLink>
                 </li>
                 <li className="mt-2">
                   <button onClick={handleLogout} className=" block text-center">

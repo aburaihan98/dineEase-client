@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../layout/HomeLayout";
+import AddFoodItem from "../pages/AddFoodItem";
+import AllFoods from "../pages/AllFoods";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Root from "../Root";
@@ -17,10 +19,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-foods",
-        // element: <Login />,
+        element: <AllFoods />,
       },
       {
         path: "/gallery",
+        // element: <Login />,
+      },
+      {
+        path: "/my-foods",
+        // element: <Login />,
+      },
+      {
+        path: "/add-food",
+        element: <AddFoodItem />,
+      },
+      {
+        path: "/my-orders",
         // element: <Login />,
       },
       {
