@@ -1,12 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router";
-import NavBar from "./component/headers/NavBar";
+import Footer from "./component/Footer";
+import NavBar from "./component/NavBar";
 
 export default function Root() {
   return (
-    <div>
+    <div className="text-white">
       <NavBar />
       <Outlet />
+      <Footer />
     </div>
   );
 }

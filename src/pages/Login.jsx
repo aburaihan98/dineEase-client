@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Fade } from "react-awesome-reveal";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
@@ -69,9 +68,7 @@ export default function Login() {
     <div className=" px-4 flex justify-center items-center min-h-screen">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">
-            <Fade cascade>Login now!</Fade>
-          </h1>
+          <h1 className="text-4xl font-bold text-primary mb-4">Login now!</h1>
         </div>
         <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
           <form onSubmit={handleLoginSubmit} className="space-y-6">

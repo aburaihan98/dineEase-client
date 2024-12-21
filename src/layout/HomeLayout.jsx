@@ -1,5 +1,9 @@
-import React from "react";
+import Banner from "../component/Banner";
 
 export default function HomeLayout() {
-  return <div></div>;
+  return (
+    <>
+      <Banner />
+    </>
+  );
 }

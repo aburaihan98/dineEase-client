@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Fade } from "react-awesome-reveal";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
@@ -89,7 +88,7 @@ export default function Register() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-primary mb-4">
-            <Fade cascade>Register now!</Fade>
+            Register now!
           </h1>
         </div>
         <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
