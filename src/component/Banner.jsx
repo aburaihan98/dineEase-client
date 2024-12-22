@@ -28,7 +28,7 @@ const Banner = () => {
         </p>
         <button
           onClick={redirectToAllFoods}
-          className="bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition duration-300"
+          className="bg-primary text-white py-3 px-6 rounded-lg text-lg hover:bg-red-700 transition duration-300"
         >
           View All Foods
         </button>

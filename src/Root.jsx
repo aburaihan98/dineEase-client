@@ -5,7 +5,7 @@ import NavBar from "./component/NavBar";
 
 export default function Root() {
   return (
-    <div className="text-white">
+    <div>
       <NavBar />
       <Outlet />
       <Footer />

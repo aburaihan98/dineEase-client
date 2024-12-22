@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-tooltip/dist/react-tooltip.css";
+
 import { AuthContext } from "../provider/AuthProvider";
-// import ThemeToggle from "../hemeToggle/ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
 
 export default function NavBar() {
   const { user, userLogout } = useContext(AuthContext);
@@ -44,6 +45,9 @@ export default function NavBar() {
               </li>
             )}
           </ul>
+          <div className="mr-2 flex justify-center items-center">
+            <ThemeToggle />
+          </div>
           {user && (
             <div className="dropdown dropdown-end z-50">
               <div

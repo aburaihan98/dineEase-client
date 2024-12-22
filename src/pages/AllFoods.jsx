@@ -33,16 +33,19 @@ const AllFoods = () => {
   if (error) return <div>Error loading foods: {error.message}</div>;
 
   return (
-    <div className="bg-gray-100">
+    <div className="">
       {/* Page Title */}
       <div
         className="relative bg-cover bg-center h-60 flex items-center justify-center text-center px-4"
         style={{
           backgroundImage:
-            'url("https://cdn.pixabay.com/photo/2021/11/01/15/52/spring-roll-6760871_1280.jpg")',
+            'url("https://cdn.pixabay.com/photo/2020/04/04/15/08/barbecue-5002642_640.jpg")',
         }}
       >
-        <h1 className="text-4xl font-bold">All Foods</h1>
+        <h1 className="text-4xl font-bold">
+          Discover Our{" "}
+          <span className="text-primary">Delicious Food Items</span>
+        </h1>
       </div>
 
       {/* Search Bar */}

@@ -1,29 +1,38 @@
-import { useMutation } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import React from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { AuthContext } from "../provider/AuthProvider";
 
-const AddFoodItem = () => {
-  const { user } = useContext(AuthContext);
+const UpdateFood = () => {
+  const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  // Define the mutation function
-  const addFoodItem = async (formData) => {
-    const response = await axiosSecure.post("/add-foods", formData);
+
+  // Fetch the food item using useQuery with an object for the query options
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["foodItem", id],
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/foods/${id}`);
+      return response.data;
+    },
+  });
+
+  const updateFoodItem = async (formData) => {
+    const response = await axiosSecure.put(`/update-food/${id}`, formData);
     return response.data;
   };
-  // Use the mutation hook
+
   const mutation = useMutation({
-    mutationFn: addFoodItem,
+    mutationFn: updateFoodItem,
     onSuccess: (data) => {
-      if (data.insertedId) {
-        toast.success("Food item added successfully!");
+      if (data.modifiedCount > 0) {
+        toast.success("Food item updated successfully!");
       } else {
-        toast.error("Failed to add food item.");
+        toast.error("Failed to update food item.");
       }
     },
     onError: () => {
-      toast.error("Failed to add food item.");
+      toast.error("Failed to update food item.");
     },
   });
 
@@ -36,17 +45,16 @@ const AddFoodItem = () => {
     formData.forEach((value, key) => {
       formObject[key] = value;
     });
-    formObject.addByName = user?.displayName || "Unknown";
-    formObject.addByEmail = user?.email || "Unknown";
 
-    // Call the mutate function from useMutation to submit the form
     mutation.mutate(formObject);
-    e.target.reset();
   };
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error fetching food item</p>;
 
   return (
     <div className="max-w-2xl mx-auto p-4 text-primary">
-      <h2 className="text-2xl font-bold mb-4">Add Food Item</h2>
+      <h2 className="text-2xl font-bold mb-4">Update Food Item</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="foodName" className="block  text-lg">
@@ -56,6 +64,7 @@ const AddFoodItem = () => {
             id="foodName"
             name="foodName"
             type="text"
+            defaultValue={data?.foodName}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
           />
@@ -69,6 +78,7 @@ const AddFoodItem = () => {
             id="foodImage"
             name="foodImage"
             type="text"
+            defaultValue={data?.foodImage}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
           />
@@ -82,6 +92,7 @@ const AddFoodItem = () => {
             id="foodCategory"
             name="foodCategory"
             type="text"
+            defaultValue={data?.foodCategory}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
           />
@@ -95,6 +106,7 @@ const AddFoodItem = () => {
             id="quantity"
             name="quantity"
             type="number"
+            defaultValue={data?.quantity}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
           />
@@ -108,6 +120,7 @@ const AddFoodItem = () => {
             id="price"
             name="price"
             type="number"
+            defaultValue={data?.price}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
           />
@@ -121,7 +134,7 @@ const AddFoodItem = () => {
             id="addByName"
             name="addByName"
             type="text"
-            defaultValue={user?.displayName}
+            defaultValue={data?.addByName}
             disabled={true}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
@@ -136,7 +149,7 @@ const AddFoodItem = () => {
             id="addByEmail"
             name="addByEmail"
             type="email"
-            defaultValue={user?.email}
+            defaultValue={data?.addByEmail}
             disabled={true}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
@@ -151,6 +164,7 @@ const AddFoodItem = () => {
             id="foodOrigin"
             name="foodOrigin"
             type="text"
+            defaultValue={data?.foodOrigin}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
           />
@@ -163,6 +177,7 @@ const AddFoodItem = () => {
           <textarea
             id="shortDescription"
             name="shortDescription"
+            defaultValue={data?.shortDescription}
             required
             className="w-full p-2 border border-gray-300 rounded-md"
           ></textarea>
@@ -172,11 +187,11 @@ const AddFoodItem = () => {
           type="submit"
           className="w-full py-3 px-6 bg-primary text-[#ffffff] rounded-md hover:bg-red-700 transition duration-300"
         >
-          Add Item
+          {mutation.isLoading ? "Updating..." : "Update food"}
         </button>
       </form>
     </div>
   );
 };
 
-export default AddFoodItem;
+export default UpdateFood;
