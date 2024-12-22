@@ -12,7 +12,8 @@ const FoodPurchase = () => {
   const location = useLocation();
   const { id } = useParams();
 
-  const { foodName, foodImage, price, quantity } = location.state.food;
+  const { foodName, foodImage, price, quantity, purchase_count } =
+    location.state.food;
   const [purchaseQuantity, setPurchaseQuantity] = useState(quantity);
 
   // Define the mutation using react-query
@@ -40,6 +41,20 @@ const FoodPurchase = () => {
 
   const handlePurchase = (e) => {
     e.preventDefault();
+
+    if (user.email === location.state.food.addByEmail) {
+      return toast.error("You cannot purchase your own added items!");
+    }
+
+    if (parseInt(quantity) === 0) {
+      return toast.error("This item is not available for purchase!");
+    }
+
+    if (purchaseQuantity > quantity) {
+      return toast.error(
+        `You cannot buy more than ${quantity} items! Please adjust your quantity.`
+      );
+    }
 
     const purchaseData = {
       foodName,
@@ -102,8 +117,14 @@ const FoodPurchase = () => {
             <input
               type="number"
               id="quantity"
-              defaultValue={purchaseQuantity}
-              onChange={(e) => setPurchaseQuantity(e.target.value)}
+              value={purchaseQuantity}
+              onChange={(e) => {
+                const value = Math.max(
+                  1,
+                  Math.min(quantity, parseInt(e.target.value))
+                );
+                setPurchaseQuantity(value);
+              }}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-300"
               required
             />
@@ -140,7 +161,7 @@ const FoodPurchase = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
+            className="w-full bg-primary text-white py-2 rounded hover:bg-red-700"
             disabled={mutation.isLoading}
           >
             {mutation.isLoading ? "Purchasing..." : "Purchase"}
