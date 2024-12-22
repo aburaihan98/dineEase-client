@@ -137,7 +137,7 @@ export default function Register() {
             </div>
 
             <div className="form-control mt-6">
-              <button className="btn btn-primary w-full py-3  rounded-lg text-white font-semibold">
+              <button className="btn bg-primary w-full py-3  rounded-lg text-white font-semibold hover:bg-red-700">
                 Login
               </button>
             </div>

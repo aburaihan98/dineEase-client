@@ -57,9 +57,11 @@ const TopFoods = () => {
               <div className="p-4">
                 <h3 className="text-lg font-semibold">{food.foodName}</h3>
                 <p className="text-gray-500">Price: ${food.price}</p>
-                <p className="text-gray-500">Purchases: {food.purchases}</p>
+                <p className="text-gray-500">
+                  Purchases: {food.purchase_count || 0}
+                </p>
                 <button
-                  onClick={() => navigate(`/food/${food.id}`)}
+                  onClick={() => navigate(`/foods/${food._id}`)}
                   className="mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-red-700"
                 >
                   View Details

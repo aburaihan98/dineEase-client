@@ -11,7 +11,7 @@ const MyFoods = () => {
 
   // Fetch the food items using TanStack Query (react-query)
   const {
-    data: foodItems,
+    data: foodItems = [],
     isLoading,
     isError,
   } = useQuery({

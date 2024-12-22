@@ -38,6 +38,7 @@ const AddFoodItem = () => {
     });
     formObject.addByName = user?.displayName || "Unknown";
     formObject.addByEmail = user?.email || "Unknown";
+    formObject.purchase_count = 0;
 
     // Call the mutate function from useMutation to submit the form
     mutation.mutate(formObject);

@@ -99,14 +99,14 @@ export default function Login() {
             </div>
 
             <div className="form-control mt-6">
-              <button className="btn btn-primary w-full py-3 rounded-lg text-white font-semibold">
+              <button className="btn bg-primary w-full py-3 rounded-lg text-white font-semibold hover:bg-red-700">
                 Login
               </button>
             </div>
           </form>
           <button
             onClick={handleGoogleLogin}
-            className="btn btn-primary w-full  mt-4 border border-primaryColor rounded-md flex items-center justify-center gap-2 text-primaryColor font-semibold text-xl mb-2"
+            className="btn bg-primary text-white w-full  mt-4 border border-primaryColor rounded-md flex items-center justify-center gap-2 text-primaryColor font-semibold text-xl mb-2 hover:bg-red-700 "
           >
             <FaGoogle />
             Login with Google
