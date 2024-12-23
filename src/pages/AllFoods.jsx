@@ -6,28 +6,22 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 const AllFoods = () => {
   const axiosSecure = useAxiosSecure();
   const [searchTerm, setSearchTerm] = useState("");
+
   // Fetch function to get all food items
   const fetchFoods = async () => {
-    const response = await axiosSecure.get("/foods");
+    const response = await axiosSecure.get(`/foods?search=${searchTerm}`);
     return response.data;
   };
 
   // Fix the useQuery hook to use the object syntax
   const {
-    data: foods,
+    data: foods = [],
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["foods"],
+    queryKey: ["foods", searchTerm],
     queryFn: fetchFoods,
   });
-
-  // Ensure foods is an array before filtering
-  const filteredFoods = Array.isArray(foods)
-    ? foods.filter((food) =>
-        food.foodName.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : [];
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading foods: {error.message}</div>;
@@ -61,8 +55,8 @@ const AllFoods = () => {
 
       {/* Food Cards */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-4">
-        {filteredFoods?.length > 0 ? (
-          filteredFoods.map((food) => (
+        {foods?.length > 0 ? (
+          foods.map((food) => (
             <div
               key={food._id}
               className="bg-white shadow-md rounded-lg overflow-hidden"

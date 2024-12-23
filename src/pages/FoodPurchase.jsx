@@ -12,8 +12,7 @@ const FoodPurchase = () => {
   const location = useLocation();
   const { id } = useParams();
 
-  const { foodName, foodImage, price, quantity, purchase_count } =
-    location.state.food;
+  const { foodName, foodImage, price, quantity } = location.state.food;
   const [purchaseQuantity, setPurchaseQuantity] = useState(quantity);
 
   // Define the mutation using react-query
@@ -67,7 +66,6 @@ const FoodPurchase = () => {
     };
 
     mutation.mutate(purchaseData);
-    e.target.reset();
   };
 
   return (
@@ -119,11 +117,7 @@ const FoodPurchase = () => {
               id="quantity"
               value={purchaseQuantity}
               onChange={(e) => {
-                const value = Math.max(
-                  1,
-                  Math.min(quantity, parseInt(e.target.value))
-                );
-                setPurchaseQuantity(value);
+                setPurchaseQuantity(e.target.value);
               }}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-300"
               required

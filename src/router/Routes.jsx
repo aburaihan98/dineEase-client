@@ -12,6 +12,7 @@ import SingleFood from "../pages/SingleFood";
 import UpdateFood from "../pages/UpdateFood";
 import Root from "../Root";
 import ErrorPage from "./../ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/purchase/:id",
-        element: <FoodPurchase />,
+        element: (
+          <PrivateRoute>
+            <FoodPurchase />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/gallery",
