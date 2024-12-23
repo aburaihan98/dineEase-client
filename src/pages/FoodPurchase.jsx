@@ -38,36 +38,6 @@ const FoodPurchase = () => {
     },
   });
 
-  const handlePurchase = (e) => {
-    e.preventDefault();
-
-    if (user.email === location.state.food.addByEmail) {
-      return toast.error("You cannot purchase your own added items!");
-    }
-
-    if (parseInt(quantity) === 0) {
-      return toast.error("This item is not available for purchase!");
-    }
-
-    if (purchaseQuantity > quantity) {
-      return toast.error(
-        `You cannot buy more than ${quantity} items! Please adjust your quantity.`
-      );
-    }
-
-    const purchaseData = {
-      foodName,
-      foodImage,
-      price: parseFloat(price),
-      quantity: parseInt(purchaseQuantity),
-      buyerName: user.displayName,
-      buyerEmail: user.email,
-      buyingDate: Date.now(),
-    };
-
-    mutation.mutate(purchaseData);
-  };
-
   return (
     <div className="py-6 lg:py-12">
       <div className="max-w-md mx-auto bg-white shadow-2xl rounded-lg p-6">
