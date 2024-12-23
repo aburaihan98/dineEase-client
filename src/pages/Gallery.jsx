@@ -69,11 +69,6 @@ const Gallery = () => {
     },
   ];
 
-  const handleImageClick = (index) => {
-    setCurrentImage(index);
-    setOpen(true);
-  };
-
   return (
     <div className="">
       {/* Page Title */}
