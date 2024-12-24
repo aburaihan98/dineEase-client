@@ -12,7 +12,8 @@ const FoodPurchase = () => {
   const location = useLocation();
   const { id } = useParams();
 
-  const { foodName, foodImage, price, quantity } = location.state.food;
+  const { foodName, foodImage, price, quantity, addByEmail } =
+    location.state.food;
   const [purchaseQuantity, setPurchaseQuantity] = useState(quantity);
 
   // Define the mutation using react-query
@@ -63,6 +64,7 @@ const FoodPurchase = () => {
       buyerName: user.displayName,
       buyerEmail: user.email,
       buyingDate: Date.now(),
+      foodOwner: addByEmail,
     };
 
     mutation.mutate(purchaseData);

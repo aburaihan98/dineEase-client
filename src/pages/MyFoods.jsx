@@ -27,9 +27,23 @@ const MyFoods = () => {
     navigate(`/update-food/${foodId}`);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error loading food items.</p>;
+  if (isLoading) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-2xl font-bold">Loading...</p>
+      </div>
+    );
+  }
 
+  if (isError) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-lg font-semibold text-red-500">
+          Something went wrong! Please try again.
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="py-6 lg:py-12">
       <div className="max-w-7xl mx-auto px-6">

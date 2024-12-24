@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -24,7 +25,7 @@ const TopFoods = () => {
   if (isLoading) {
     return (
       <div className="text-center py-10">
-        <p className="text-lg font-semibold">Loading...</p>
+        <p className="text-2xl font-bold">Loading...</p>
       </div>
     );
   }
@@ -45,9 +46,13 @@ const TopFoods = () => {
         <h2 className="text-2xl font-bold text-center mb-6">Top Foods</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {topFoods?.map((food) => (
-            <div
+            <motion.div
               key={food._id}
               className="bg-white shadow-md rounded-lg overflow-hidden"
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <img
                 src={food.foodImage}
@@ -67,7 +72,7 @@ const TopFoods = () => {
                   View Details
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         <div className="text-center mt-8">

@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
@@ -8,9 +8,14 @@ import { AuthContext } from "../provider/AuthProvider";
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
+  const queryClient = useQueryClient();
 
   // Fetching ordered food items for the logged-in user
-  const { data: orders = [], isLoading } = useQuery({
+  const {
+    data: orders = [],
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["myOrders", user?.email],
     queryFn: async () => {
       const response = await axiosSecure.get(`/my-orders/${user?.email}`);
@@ -25,7 +30,11 @@ const MyOrders = () => {
       const response = await axiosSecure.delete(`/orders/${orderId}`);
       return response.data;
     },
-    onSuccess: () => {
+    onSuccess: (_, orderId) => {
+      // Update the cache to remove the deleted order
+      queryClient.setQueryData(["myOrders", user?.email], (oldOrders) => {
+        return oldOrders.filter((order) => order._id !== orderId);
+      });
       toast.success("Order deleted successfully!");
     },
     onError: () => {
@@ -37,8 +46,23 @@ const MyOrders = () => {
     mutation.mutate(orderId);
   };
 
-  if (isLoading)
-    return <p className="text-center mt-6">Loading your orders...</p>;
+  if (isLoading) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-2xl font-bold">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-lg font-semibold text-red-500">
+          Something went wrong! Please try again.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto p-4">
@@ -66,7 +90,7 @@ const MyOrders = () => {
               </p>
               <p className="text-gray-600">
                 <strong>Ordered On:</strong>{" "}
-                {moment(order.createdAt).format("MMMM Do YYYY, h:mm:ss a")}
+                {moment(order.buyingDate).format("MMMM Do YYYY, h:mm:ss a")}
               </p>
               <button
                 onClick={() => handleDelete(order._id)}

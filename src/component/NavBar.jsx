@@ -52,11 +52,6 @@ export default function NavBar() {
               <li>
                 <NavLink to="/gallery">Gallery</NavLink>
               </li>
-              {!user && (
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-              )}
             </ul>
           </div>
           {/* Logo */}
@@ -79,11 +74,6 @@ export default function NavBar() {
             <li>
               <NavLink to="/gallery">Gallery</NavLink>
             </li>
-            {!user && (
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            )}
           </ul>
         </div>
         {/* End Section */}

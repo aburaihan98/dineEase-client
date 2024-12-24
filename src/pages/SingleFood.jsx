@@ -22,8 +22,23 @@ const SingleFood = () => {
     queryFn: fetchFood,
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading food: {error.message}</div>;
+  if (isLoading) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-2xl font-bold">Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-10">
+        <p className="text-lg font-semibold text-red-500">
+          Something went wrong! Please try again.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="py-10">

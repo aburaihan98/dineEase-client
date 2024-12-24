@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Fb from "../assets/image/fb.png";
 import Ins from "../assets/image/ins.jpeg";
 import Twitter from "../assets/image/twitter.png";
@@ -6,10 +7,10 @@ export default function Footer() {
   return (
     <footer className="bg-gray-800 text-white py-8 ">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between">
           {/* Logo and Description */}
           <div className="flex flex-col items-center md:items-start">
-            <p className="text-lg font-semibold mb-2">DineEase</p>
+            <p className="text-lg font-semibold mb-2 text-center">DineEase</p>
             <p className="text-sm text-center md:text-left">
               The best restaurant management platform for efficient ordering,
               managing, and delivery systems.
@@ -21,24 +22,19 @@ export default function Footer() {
               <p className="font-bold mb-2">Quick Links</p>
               <ul className="space-y-2">
                 <li>
-                  <a href="/" className="hover:text-green-500">
+                  <Link to="/" className="hover:text-green-500">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/all-foods" className="hover:text-green-500">
+                  <Link to="/all-foods" className="hover:text-green-500">
                     All Foods
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/gallery" className="hover:text-green-500">
+                  <Link to="/gallery" className="hover:text-green-500">
                     Gallery
-                  </a>
-                </li>
-                <li>
-                  <a href="/about" className="hover:text-green-500">
-                    About Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -74,7 +70,7 @@ export default function Footer() {
           </div>
 
           {/* Social Media Links */}
-          <div className="flex space-x-6 mt-6 md:mt-0">
+          <div className="flex justify-center  space-x-6 mt-6 md:mt-0">
             <a
               href="https://facebook.com"
               target="_blank"
