@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 const axiosSecure = axios.create({
@@ -17,10 +18,7 @@ const useAxiosSecure = () => {
         return res;
       },
       async (error) => {
-        console.log(
-          "error caught from our very own axios interceptor-->",
-          error.response
-        );
+        toast.error(error?.data?.message);
         if (error.response.status === 401 || error.response.status === 403) {
           // logout
           userLogout();
