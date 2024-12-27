@@ -1,4 +1,4 @@
-### dine-ease
+### DineEase
 
 "Dine-Ease" aims to provide a seamless restaurant management experience by allowing restaurant owners and staff to efficiently manage food items, customer orders, and online interactions. The platform enables users to browse the menu, place orders, and manage their profiles. It also includes features for inventory management, food item addition, and purchasing, all integrated with Firebase authentication and secure database interactions using MongoDB. The project focuses on user-friendly navigation, responsive design, and ease of use for both customers and staff.
 
