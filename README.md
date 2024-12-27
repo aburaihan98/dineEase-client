@@ -80,4 +80,5 @@ https://abu-raihan-37e40.web.app
 - react-router-dom
 - react-toastify
 - sweetalert2
-- yet-another-react-lightbox
+- yet-another-react-lightbo
+- fortawesome/fontawesome-free
