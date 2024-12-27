@@ -72,13 +72,13 @@ const AllFoods = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="text-center py-10">
-        <p className="text-2xl font-bold">Loading...</p>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="text-center py-10">
+  //       <p className="text-2xl font-bold">Loading...</p>
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (
@@ -107,13 +107,13 @@ const AllFoods = () => {
       </div>
 
       {/* Filter Section */}
-      <div className="m-auto mt-6 p-4 flex flex-col lg:flex-row gap-4 justify-center items-center">
-        <div className="flex gap-4 items-center">
+      <div className="w-11/12 m-auto mt-6 p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="flex gap-4 items-center col-span-1">
           <select
             name="origin"
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
-            className="border p-4 rounded-md"
+            className="w-full border p-4 rounded-md"
           >
             <option value="">Select Origin</option>
             {uniqueOrigins.map((origin) => (
@@ -122,30 +122,34 @@ const AllFoods = () => {
               </option>
             ))}
           </select>
+        </div>
 
+        <div className="flex gap-4 items-center col-span-1">
           <input
             type="text"
             name="search"
             placeholder="Search"
-            value={search}
+            defaultValue={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border p-4 rounded-md"
+            className="w-full border p-4 rounded-md"
           />
+        </div>
 
-          <div>
-            <select
-              name="sortByPrice"
-              id="sortByPrice"
-              onChange={(e) => setSortByPrice(e.target.value)}
-              className="border p-4 rounded-md"
-              value={sortByPrice}
-            >
-              <option value="">Sort By Price</option>
-              <option value="dsc">Descending Order</option>
-              <option value="asc">Ascending Order</option>
-            </select>
-          </div>
+        <div className="flex gap-4 items-center col-span-1">
+          <select
+            name="sortByPrice"
+            id="sortByPrice"
+            onChange={(e) => setSortByPrice(e.target.value)}
+            className="w-full border p-4 rounded-md"
+            value={sortByPrice}
+          >
+            <option value="">Sort By Price</option>
+            <option value="dsc">Descending Order</option>
+            <option value="asc">Ascending Order</option>
+          </select>
+        </div>
 
+        <div className="flex gap-4 items-center col-span-1">
           <button onClick={handleReset} className="btn">
             Reset
           </button>
@@ -153,7 +157,7 @@ const AllFoods = () => {
       </div>
 
       {/* Food Cards */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-4">
+      <div className="w-11/12 m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-4">
         {foods?.length > 0 ? (
           foods.map((food) => (
             <motion.div

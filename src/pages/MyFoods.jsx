@@ -53,7 +53,7 @@ const MyFoods = () => {
         {/* Show food items in a grid of cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {foodItems.length === 0 ? (
-            <p className="text-center text-lg">
+            <p className="text-center text-2xl font-bold">
               You haven't added any food items yet.
             </p>
           ) : (
@@ -64,9 +64,19 @@ const MyFoods = () => {
                   alt={food.foodName}
                   className="w-full h-48 object-cover rounded-md mb-4"
                 />
-                <h3 className="text-xl font-semibold">{food.foodName}</h3>
-                <p className="text-gray-600">Price: ${food.price}</p>
-                <p className="text-gray-500">Quantity: {food.quantity}</p>
+                <h3 className="text-xl font-semibold text-gray-600">
+                  {food.foodName}
+                </h3>
+                <p className="text-gray-600">
+                  <strong>Price: </strong>${food.price}
+                </p>
+                <p className="text-gray-500">
+                  <strong>Quantity: </strong> {food.quantity}
+                </p>
+                <p className="text-gray-500">
+                  <strong>Category: </strong>
+                  {food.foodCategory}
+                </p>
 
                 {/* Update button */}
                 <button

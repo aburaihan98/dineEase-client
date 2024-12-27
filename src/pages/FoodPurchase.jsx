@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -11,6 +11,7 @@ const FoodPurchase = () => {
   const axiosSecure = useAxiosSecure();
   const location = useLocation();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { foodName, foodImage, price, quantity, addByEmail } =
     location.state.food;
@@ -30,6 +31,7 @@ const FoodPurchase = () => {
     onSuccess: (data) => {
       if (data.insertedId) {
         toast.success("Purchase food  item added successfully!");
+        navigate("/my-orders");
       } else {
         toast.error("Failed to add Purchase food item.");
       }
@@ -112,6 +114,20 @@ const FoodPurchase = () => {
               htmlFor="quantity"
               className="block text-sm font-medium text-gray-700"
             >
+              Total quantity
+            </label>
+            <input
+              type="number"
+              id="quantity"
+              defaultValue={quantity}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-300"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="quantity"
+              className="block text-sm font-medium text-gray-700"
+            >
               Quantity
             </label>
             <input
@@ -137,7 +153,7 @@ const FoodPurchase = () => {
               id="buyerName"
               defaultValue={user?.displayName}
               readOnly
-              className="w-full px-4 py-2 border bg-gray-100 rounded"
+              className="w-full px-4 py-2 border bg-gray-100 rounded hover:cursor-not-allowed "
             />
           </div>
           <div>
@@ -152,7 +168,7 @@ const FoodPurchase = () => {
               id="buyerEmail"
               defaultValue={user?.email}
               readOnly
-              className="w-full px-4 py-2 border bg-gray-100 rounded"
+              className="w-full px-4 py-2 border bg-gray-100 rounded hover:cursor-not-allowed"
             />
           </div>
           <button

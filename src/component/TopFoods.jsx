@@ -45,35 +45,41 @@ const TopFoods = () => {
       <div className="w-11/12 m-auto">
         <h2 className="text-2xl font-bold text-center mb-6">Top Foods</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {topFoods?.map((food) => (
-            <motion.div
-              key={food._id}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <img
-                src={food.foodImage}
-                alt={food.foodName}
-                className="w-full h-40 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">{food.foodName}</h3>
-                <p className="text-gray-500">Price: ${food.price}</p>
-                <p className="text-gray-500">
-                  Purchases: {food.purchase_count || 0}
-                </p>
-                <button
-                  onClick={() => navigate(`/foods/${food._id}`)}
-                  className="mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-red-700"
-                >
-                  View Details
-                </button>
-              </div>
-            </motion.div>
-          ))}
+          {topFoods && topFoods.length > 0 ? (
+            topFoods.map((food) => (
+              <motion.div
+                key={food._id}
+                className="bg-white shadow-md rounded-lg overflow-hidden"
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img
+                  src={food.foodImage}
+                  alt={food.foodName}
+                  className="w-full h-40 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold">{food.foodName}</h3>
+                  <p className="text-gray-500">Price: ${food.price}</p>
+                  <p className="text-gray-500">
+                    Purchases: {food.purchase_count || 0}
+                  </p>
+                  <button
+                    onClick={() => navigate(`/foods/${food._id}`)}
+                    className="mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-red-700"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <div className="col-span-full text-center p-4 text-lg font-semibold text-gray-500">
+              No items available at the moment.
+            </div>
+          )}
         </div>
         <div className="text-center mt-8">
           <button

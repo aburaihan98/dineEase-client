@@ -52,6 +52,9 @@ const SingleFood = () => {
         <div className="mt-6">
           <h2 className="text-2xl font-bold">{food.foodName}</h2>
           <p className="text-gray-700 mt-2">
+            <strong>Description:</strong> {food.shortDescription}
+          </p>
+          <p className="text-gray-700 mt-2">
             <strong>Category:</strong> {food.foodCategory}
           </p>
           <p className="text-gray-700 mt-2">
@@ -59,6 +62,9 @@ const SingleFood = () => {
           </p>
           <p className="text-gray-700 mt-2">
             <strong>Quantity:</strong> {food.quantity}
+          </p>
+          <p className="text-gray-700 mt-2">
+            <strong>Origin:</strong> {food.foodOrigin}
           </p>
           <p className="text-gray-700 mt-2">
             <strong>Purchase:</strong> {food.purchase_count || 0}

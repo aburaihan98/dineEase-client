@@ -11,7 +11,7 @@ const Gallery = () => {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   const totalImages = 48;
-  const imagesPerBatch = 6;
+  const imagesPerBatch = 12;
 
   const fetchMoreImages = () => {
     if (images.length >= totalImages) {
@@ -291,12 +291,12 @@ const Gallery = () => {
           </h4>
         }
         endMessage={
-          <p className="text-center text-gray-600 mt-6">
+          <p className="text-center text-2xl font-bold text-gray-600 my-6">
             🎉 You've reached the end!
           </p>
         }
       >
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-6">
+        <div className="w-11/12 m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-6">
           {images.map((image, index) => (
             <div
               key={index}

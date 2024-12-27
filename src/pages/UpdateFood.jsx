@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
@@ -8,6 +8,7 @@ const UpdateFood = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   // Fetch the food item using useQuery with an object for the query options
   const { data, isLoading, error } = useQuery({
@@ -29,6 +30,7 @@ const UpdateFood = () => {
       if (data.modifiedCount > 0) {
         queryClient.invalidateQueries(["foods"]);
         toast.success("Food item updated successfully!");
+        navigate("/my-foods");
       } else {
         toast.error("Failed to update food item.");
       }
