@@ -47,7 +47,7 @@ const MyFoods = () => {
   return (
     <div className="py-6 lg:py-12">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-semibold text-center mb-8">
+        <h2 className="text-3xl font-semibold text-center mb-8 text-gray-700">
           My Food Items
         </h2>
         {/* Show food items in a grid of cards */}

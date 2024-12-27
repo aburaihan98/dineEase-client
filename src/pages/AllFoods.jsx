@@ -107,7 +107,7 @@ const AllFoods = () => {
       </div>
 
       {/* Filter Section */}
-      <div className="w-11/12 m-auto mt-6 p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="w-11/12 m-auto mt-6 p-4  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="flex gap-4 items-center col-span-1">
           <select
             name="origin"
@@ -131,7 +131,7 @@ const AllFoods = () => {
             placeholder="Search"
             defaultValue={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full border p-4 rounded-md"
+            className="w-full border p-4 rounded-md "
           />
         </div>
 

@@ -43,7 +43,9 @@ const TopFoods = () => {
   return (
     <section className="py-10">
       <div className="w-11/12 m-auto">
-        <h2 className="text-2xl font-bold text-center mb-6">Top Foods</h2>
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">
+          Top Foods
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {topFoods && topFoods.length > 0 ? (
             topFoods.map((food) => (
