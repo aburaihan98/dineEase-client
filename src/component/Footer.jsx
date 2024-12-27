@@ -12,8 +12,9 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <p className="text-lg font-semibold mb-2 text-center">DineEase</p>
             <p className="text-sm text-center md:text-left">
-              The best restaurant management platform for efficient ordering,
-              managing, and delivery systems.
+              The best restaurant management platform for{" "}
+              <br className=" block lg:hidden" /> efficient ordering, managing,
+              and delivery systems.
             </p>
           </div>
           {/* Links */}

@@ -109,20 +109,7 @@ const FoodPurchase = () => {
               readOnly
             />
           </div>
-          <div>
-            <label
-              htmlFor="quantity"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Total quantity
-            </label>
-            <input
-              type="number"
-              id="quantity"
-              defaultValue={quantity}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-300"
-            />
-          </div>
+
           <div>
             <label
               htmlFor="quantity"

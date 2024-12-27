@@ -296,7 +296,7 @@ const Gallery = () => {
           </p>
         }
       >
-        <div className="w-11/12 m-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-6">
+        <div className="w-11/12 m-auto grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
           {images.map((image, index) => (
             <div
               key={index}
