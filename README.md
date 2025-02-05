@@ -120,4 +120,4 @@ npm install
 npm run dev
 
 ## live project links:
-https://abu-raihan-37e40.web.app/
+https://dine-ease-aacad.web.app/
