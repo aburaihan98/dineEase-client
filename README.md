@@ -1,84 +1,120 @@
-### DineEase
+# Dine-Ease - Restaurant Management Website 🍽️
 
-"Dine-Ease" aims to provide a seamless restaurant management experience by allowing restaurant owners and staff to efficiently manage food items, customer orders, and online interactions. The platform enables users to browse the menu, place orders, and manage their profiles. It also includes features for inventory management, food item addition, and purchasing, all integrated with Firebase authentication and secure database interactions using MongoDB. The project focuses on user-friendly navigation, responsive design, and ease of use for both customers and staff.
+Dine-Ease is a full-stack restaurant management platform designed to improve the efficiency of food ordering and inventory management. Built using the MERN stack, the website provides functionalities like food management, user authentication, and a seamless user experience for both customers and staff.
 
-# Live URL
+![Dine-Ease Screenshot](screenshot.jpg)  <!-- Add a clean screenshot here -->
 
-https://abu-raihan-37e40.web.app
+## Project Overview
 
-# key features
+Dine-Ease offers a smooth restaurant management experience with features like food CRUD operations, user authentication (email/password & social login), food purchases, gallery management, and more. It is designed to be fully responsive and offers features like JWT authentication, theme customization (dark/light mode), and infinite scrolling on the gallery page.
 
-- User Authentication:
-  Email/password-based login and registration.
-  Google login integration.
-  Password verification (uppercase, lowercase, and minimum length).
+## Key Features
 
-- Food Management:
-  CRUD operations for managing food items (Add, Update).
-  Display food items on the "All Foods" page with relevant details.
-  Filter food items using MongoDB’s $and operators on the server side.
+- **User Authentication:**
+  - Email/password-based login and registration.
+  - Google login integration.
+  - Password verification (uppercase, lowercase, and minimum length).
 
-- Food Purchase:
-  Ability to purchase food, including quantity restrictions.
-  Display purchase count for each food item.
+- **Food Management:**
+  - Add, Update, and Delete food items.
+  - View food details on the "All Foods" page.
+  - Filter food items using MongoDB’s `$and` operators.
 
-- Gallery Section:
-  Display 48 static images.
-  Image lightbox functionality with a library like "react-lightbox."
+- **Food Purchase:**
+  - Users can purchase food with quantity restrictions.
+  - Display purchase count for each food item.
 
-- User Profile:
-  Display logged-in user’s profile image and name.
-  Show user-specific orders and food items.
-  Option to update food items only for the logged-in user.
+- **Gallery Section:**
+  - 48 static images with image lightbox functionality using `react-lightbox`.
 
-- Responsive Design:
-  Fully responsive layout for mobile, tablet, and desktop.
+- **User Profile:**
+  - Display logged-in user’s profile image and name.
+  - Manage user-specific food items and orders.
 
-- Theme Customization:
-  Dark/Light theme toggle functionality for the entire website.
+- **Responsive Design:**
+  - Fully responsive design for mobile, tablet, and desktop.
 
-- Search and Filter Functionality:
-  Search food items by name and sortByPrice and origin on the All Foods page.
+- **Theme Customization:**
+  - Dark/Light theme toggle functionality.
 
-- Pagination:
-  Implement pagination for food items on the All Foods page, showing 9 items per page.
+- **Search and Filter:**
+  - Search food items by name.
+  - Filter food items based on price and origin.
 
-- JWT Authentication:
-  Use JWT tokens to secure private routes and verify users.
+- **Pagination:**
+  - Pagination for food items with 9 items per page.
 
-- Toast and Sweetalert2 Notifications:
-  Show success or error messages upon actions like successful login, registration, or food purchase.
+- **JWT Authentication:**
+  - JWT tokens for secure private routes.
 
-- Food Quantity Management:
-  Restrict purchases based on available quantity.
-  Show message when a food item is out of stock.
+- **Toast & Sweetalert2 Notifications:**
+  - Display notifications for login, registration, and food purchase actions.
 
-- Gallery Image Infinite Scrolling:
-  Implement infinite scroll on the gallery page to load images as users scroll down.
-  Admin Dashboard:
+- **Food Quantity Management:**
+  - Restrict purchases based on available food quantity.
+  - Notify users when a food item is out of stock.
 
-- Separate pages for managing food items, orders, and user information.
+- **Gallery Infinite Scrolling:**
+  - Infinite scrolling for gallery images.
 
-- Add/Remove Foods from My Foods Page:
-  Allow users to add food items they created and manage them.
-  Error Handling:
-  Proper error handling for failed login, registration, and food operations.
+## Technologies Used
 
-# npm packages
+- React.js
+- Node.js
+- MongoDB
+- Express.js
+- Firebase Authentication
+- React Router
+- React Toastify
+- Sweetalert2
+- Framer Motion
+- Lottie-web
+- Moment.js
+- Axios
+- React Query (Tanstack)
+- React Rating Stars Component
+- React Infinite Scroll Component
+- React Lightbox
+- FontAwesome
 
-- emotion/react
-- tanstack/react-query
-- axios
-- firebase
-- framer-motion
-- lottie-web
-- moment
-- react-dom
-- react-infinite-scroll-component
-- react-rating-stars-component
-- react-router
-- react-router-dom
-- react-toastify
-- sweetalert2
-- yet-another-react-lightbo
-- fortawesome/fontawesome-free
+## Dependencies
+
+- **Frontend:**
+  - `react`
+  - `react-router-dom`
+  - `firebase`
+  - `axios`
+  - `react-toastify`
+  - `sweetalert2`
+  - `framer-motion`
+  - `moment`
+  - `react-infinite-scroll-component`
+  - `react-lightbox`
+  - `react-rating-stars-component`
+
+- **Backend:**
+  - `express`
+  - `mongoose`
+  - `jsonwebtoken`
+  - `dotenv`
+
+## Running the Project Locally
+
+### Prerequisites
+- Node.js
+- MongoDB instance
+- Firebase credentials (for authentication)
+
+## Steps to Run Locally
+
+### 1. Clone this repository -
+git clone https://github.com/aburaihan98/DineEase-client.git
+
+### 2. Go to the cloned project directory
+cd DineEase-client
+
+### 3. Just run this command to install node dependencies
+npm install
+
+### 4. Just run this command
+npm run dev
