@@ -17,6 +17,11 @@ export default function NavBar() {
       .catch((error) => toast.error(error.message));
   };
 
+  let a = true;
+  if (a) {
+    return <Loading />;
+  }
+
   return (
     <div className="sticky top-0 z-50 py-2 bg-primary text-secondary font-semibold text-[15px]">
       <div className="navbar px-0 w-11/12 m-auto">

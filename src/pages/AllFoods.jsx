@@ -82,9 +82,9 @@ const AllFoods = () => {
     AOS.refreshHard();
   }, [foods]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
   if (error) {
     return <Error />;
