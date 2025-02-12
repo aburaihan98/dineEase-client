@@ -36,9 +36,9 @@ export default function ChefsSpecial() {
   }, [data]);
 
   return (
-    <section className="bg-gradient-to-r from-green-400 to-blue-500 py-5 md:py-10">
+    <section className="bg-primary pb-5 md:pb-10">
       <div className="w-11/12 mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-4 lg:mb-8 text-white">
+        <h2 className="text-2xl font-bold text-center mb-4 lg:mb-8 text-heading">
           Today's Chef's Special
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
