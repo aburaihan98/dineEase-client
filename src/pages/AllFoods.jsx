@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import AOS from "aos";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Error from "../Error";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AllFoods = () => {
@@ -81,13 +82,13 @@ const AllFoods = () => {
     AOS.refreshHard();
   }, [foods]);
 
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
+  if (isLoading) {
+    return <Loading />;
+  }
 
-  // if (error) {
-  //   return <Error />;
-  // }
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <div className="bg-primary">
