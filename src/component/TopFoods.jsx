@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
-import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
@@ -22,6 +23,15 @@ const TopFoods = () => {
     queryFn: fetchTopFoods,
   });
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    AOS.refreshHard();
+  }, [topFoods]);
+
   if (isLoading) {
     return (
       <div className="text-center py-10">
@@ -41,41 +51,35 @@ const TopFoods = () => {
   }
 
   return (
-    <section className="py-10">
+    <section className="py-5 md:py-10 bg-primary">
       <div className="w-11/12 m-auto">
-        <h2 className="text-2xl font-bold text-center mb-6 text-gray-700">
+        <h2 className="text-2xl font-bold text-center mb-4 lg:mb-8 text-heading">
           Top Foods
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {topFoods && topFoods.length > 0 ? (
-            topFoods.map((food) => (
-              <motion.div
+            topFoods?.map((food, index) => (
+              <div
                 key={food._id}
-                className="bg-white shadow-md rounded-lg overflow-hidden"
-                initial={{ opacity: 0, x: -100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col"
+                data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
               >
                 <img
                   src={food.foodImage}
                   alt={food.foodName}
-                  className="w-full h-40 object-cover"
+                  className="w-full h-80 object-cover"
                 />
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold">{food.foodName}</h3>
-                  <p className="text-gray-500">Price: ${food.price}</p>
-                  <p className="text-gray-500">
-                    Purchases: {food.purchase_count || 0}
-                  </p>
+                <div className="p-4 flex flex-col flex-grow">
+                  <h3 className="text-lg font-semibold">{food?.foodName}</h3>
+                  <p className="flex-grow">{food?.shortDescription}</p>
                   <button
                     onClick={() => navigate(`/foods/${food._id}`)}
-                    className="mt-4 bg-primary text-white py-2 px-4 rounded hover:bg-red-700"
+                    className="mt-4 font-bold bg-secondary text-white py-2 px-4 rounded self-start"
                   >
                     View Details
                   </button>
                 </div>
-              </motion.div>
+              </div>
             ))
           ) : (
             <div className="col-span-full text-center p-4 text-lg font-semibold text-gray-500">
@@ -86,7 +90,7 @@ const TopFoods = () => {
         <div className="text-center mt-8">
           <button
             onClick={() => navigate("/all-foods")}
-            className="bg-primary text-white py-2 px-6 rounded hover:bg-red-700"
+            className="bg-secondary text-white font-bold py-2 px-6 rounded"
           >
             See All
           </button>

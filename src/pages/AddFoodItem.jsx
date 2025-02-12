@@ -36,6 +36,9 @@ const AddFoodItem = () => {
     formData.forEach((value, key) => {
       formObject[key] = value;
     });
+    // Convert price to a number
+    formObject.quantity = Number(formObject.quantity) || 0;
+    formObject.price = Number(formObject.price) || 0;
     formObject.addByName = user?.displayName || "Unknown";
     formObject.addByEmail = user?.email || "Unknown";
     formObject.purchase_count = 0;

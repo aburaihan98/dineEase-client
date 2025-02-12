@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
-import React, { useState } from "react";
+import AOS from "aos";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
@@ -90,8 +90,17 @@ const AllFoods = () => {
     );
   }
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    AOS.refreshHard();
+  }, []);
+
   return (
-    <div className="">
+    <div className="bg-primary">
       {/* Page Title */}
       <div
         className="relative bg-cover bg-center h-60 flex items-center justify-center text-center px-4"
@@ -107,66 +116,68 @@ const AllFoods = () => {
       </div>
 
       {/* Filter Section */}
-      <div className="w-11/12 m-auto mt-6 p-4  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="flex gap-4 items-center col-span-1">
-          <select
-            name="origin"
-            value={origin}
-            onChange={(e) => setOrigin(e.target.value)}
-            className="w-full border p-4 rounded-md"
-          >
-            <option value="">Select Origin</option>
-            {uniqueOrigins.map((origin) => (
-              <option key={origin} value={origin}>
-                {origin}
-              </option>
-            ))}
-          </select>
-        </div>
+      <div className="flex justify-center font-bold">
+        <div className="w-11/12 m-auto py-5 md:py-10 flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-8">
+          <div className="w-full flex gap-4 items-center ">
+            <select
+              name="origin"
+              value={origin}
+              onChange={(e) => setOrigin(e.target.value)}
+              className="w-full border p-4 rounded-md"
+            >
+              <option value="">Select Origin</option>
+              {uniqueOrigins.map((origin) => (
+                <option key={origin} value={origin}>
+                  {origin}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="flex gap-4 items-center col-span-1">
-          <input
-            type="text"
-            name="search"
-            placeholder="Search"
-            defaultValue={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full border p-4 rounded-md "
-          />
-        </div>
+          <div className="w-full flex gap-4 items-center ">
+            <input
+              type="text"
+              name="search"
+              placeholder="Search"
+              defaultValue={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full border p-4 rounded-md "
+            />
+          </div>
 
-        <div className="flex gap-4 items-center col-span-1">
-          <select
-            name="sortByPrice"
-            id="sortByPrice"
-            onChange={(e) => setSortByPrice(e.target.value)}
-            className="w-full border p-4 rounded-md"
-            value={sortByPrice}
-          >
-            <option value="">Sort By Price</option>
-            <option value="dsc">Descending Order</option>
-            <option value="asc">Ascending Order</option>
-          </select>
-        </div>
+          <div className="w-full flex gap-4 items-center ">
+            <select
+              name="sortByPrice"
+              id="sortByPrice"
+              onChange={(e) => setSortByPrice(e.target.value)}
+              className="w-full border p-4 rounded-md"
+              value={sortByPrice}
+            >
+              <option value="">Sort By Price</option>
+              <option value="dsc">Descending Order</option>
+              <option value="asc">Ascending Order</option>
+            </select>
+          </div>
 
-        <div className="flex gap-4 items-center col-span-1">
-          <button onClick={handleReset} className="btn">
-            Reset
-          </button>
+          <div className="flex gap-4 items-center ">
+            <button
+              onClick={handleReset}
+              className="font-bold bg-secondary text-white py-4 px-6 rounded"
+            >
+              Reset
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Food Cards */}
-      <div className="w-11/12 m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-4">
+      <div className="w-11/12 m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {foods?.length > 0 ? (
-          foods.map((food) => (
-            <motion.div
+          foods?.map((food, index) => (
+            <div
               key={food._id}
               className="bg-white shadow-md rounded-lg overflow-hidden"
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
             >
               <img
                 src={food.foodImage}
@@ -186,12 +197,12 @@ const AllFoods = () => {
                 </p>
                 <Link
                   to={`/foods/${food._id}`}
-                  className="block bg-primary text-white text-center py-2 rounded-lg mt-4 hover:bg-red-700 transition"
+                  className="block font-bold bg-secondary text-white py-2 px-4 rounded text-center mt-4  transition"
                 >
                   View Details
                 </Link>
               </div>
-            </motion.div>
+            </div>
           ))
         ) : (
           <p className="text-center col-span-3 text-gray-700">
@@ -200,14 +211,14 @@ const AllFoods = () => {
         )}
       </div>
       {/* Pagination */}
-      <div className="flex flex-col items-center gap-4 p-4 bg-gray-100 rounded-lg shadow-md">
-        <p className="text-lg font-medium text-gray-700">
+      <div className="flex flex-col items-center gap-4 p-4 bg-primary rounded-lg shadow-md">
+        <p className="text-lg font-medium text-heading">
           Current page:{" "}
-          <span className="font-bold text-red-600">{currentPage}</span>
+          <span className="font-bold text-secondary">{currentPage}</span>
         </p>
         <div className="flex items-center gap-2">
           <button
-            className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="px-4 py-2 text-sm font-medium text-white bg-secondary rounded-md  disabled:bg-gray-300 disabled:cursor-not-allowed"
             onClick={handlePrevItem}
           >
             Prev
@@ -216,7 +227,7 @@ const AllFoods = () => {
             <button
               className={`px-3 py-1 text-sm font-medium rounded-md ${
                 currentPage === page
-                  ? "bg-red-700 text-white"
+                  ? "bg-secondary text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               }`}
               key={page}
@@ -226,7 +237,7 @@ const AllFoods = () => {
             </button>
           ))}
           <button
-            className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="px-4 py-2 text-sm font-medium text-white bg-secondary rounded-md disabled:bg-gray-300 disabled:cursor-not-allowed"
             onClick={handleNextItem}
           >
             Next

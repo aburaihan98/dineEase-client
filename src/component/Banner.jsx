@@ -18,17 +18,17 @@ const Banner = () => {
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
       {/* Dark overlay for better readability */}
-      <div className="relative z-10 text-white">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      <div className="relative z-10">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-yellow-color">
           Discover Delicious Foods
         </h1>
-        <p className="text-lg md:text-xl mb-6">
+        <p className="text-lg md:text-xl mb-6 text-white">
           Explore our wide range of delicious and healthy meals to satisfy your
           cravings.
         </p>
         <button
           onClick={redirectToAllFoods}
-          className="bg-primary text-white py-3 px-6 rounded-lg text-lg hover:bg-red-700 transition duration-300"
+          className="bg-white text-secondary font-bold py-3 px-6 rounded-lg text-lg hover:bg-yellow-color hover:text-white transition duration-300"
         >
           View All Foods
         </button>

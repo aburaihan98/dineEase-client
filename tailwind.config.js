@@ -4,8 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#D32F2F",
-        secondary: "#FF8A80",
+        primary: "#F7F2E2",
+        secondary: "#880000",
+        "yellow-color": "#ffc021",
+        heading: "#1e1d23",
       },
     },
   },

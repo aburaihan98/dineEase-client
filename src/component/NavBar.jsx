@@ -18,7 +18,7 @@ export default function NavBar() {
   };
 
   return (
-    <div className="bg-primary text-white">
+    <div className="sticky top-0 z-50 bg-primary text-secondary font-semibold text-[15px]">
       <div className="navbar px-0 w-11/12 m-auto">
         <div className="navbar-start">
           {/* Dropdown for Mobile */}
@@ -44,7 +44,14 @@ export default function NavBar() {
               className="bg-primary text-white menu menu-sm dropdown-content mt-3 w-52 rounded-box p-2 shadow z-[1]"
             >
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "text-yellow-color" : ""
+                  }
+                  to="/"
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/all-foods">All Foods</NavLink>
@@ -55,25 +62,82 @@ export default function NavBar() {
             </ul>
           </div>
           {/* Logo */}
-          <Link
-            to="/"
-            className="btn btn-ghost text-xl flex gap-2 items-center"
-          >
+          <Link to="/" className="text-xl flex gap-2 items-center">
             <span className="font-bold text-2xl">DineEase</span>
           </Link>
         </div>
         {/* Navbar Links */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="flex items-center gap-4 px-1">
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-color pb-1 border-b-2 border-yellow-color"
+                    : ""
+                }
+                to="/"
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/all-foods">All Foods</NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-color pb-1 border-b-2 border-yellow-color"
+                    : ""
+                }
+                to="/all-foods"
+              >
+                All Foods
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/gallery">Gallery</NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-yellow-color pb-1 border-b-2 border-yellow-color"
+                    : ""
+                }
+                to="/gallery"
+              >
+                Gallery
+              </NavLink>
             </li>
+            {user && (
+              <>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-yellow-color pb-1 border-b-2 border-yellow-color"
+                        : ""
+                    }
+                    to="/my-foods"
+                  >
+                    My Foods
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-yellow-color pb-1 border-b-2 border-yellow-color"
+                        : ""
+                    }
+                    to="/add-food"
+                  >
+                    Add Food
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/my-orders pb-1 border-b-2 border-yellow-color">
+                    My Orders
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         {/* End Section */}
@@ -98,18 +162,9 @@ export default function NavBar() {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 w-52 rounded-box bg-primary p-2 shadow z-[1]"
+                className="menu menu-sm dropdown-content mt-3 w-52 rounded-box bg-[#3f444b] text-white p-2 shadow z-[1]"
               >
-                <li>
-                  <NavLink to="/my-foods">My Foods</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/add-food">Add Food</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/my-orders">My Orders</NavLink>
-                </li>
-                <li className="mt-2">
+                <li className="">
                   <button onClick={handleLogout} className="block text-center">
                     Logout
                   </button>

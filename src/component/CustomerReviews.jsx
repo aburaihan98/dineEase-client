@@ -1,4 +1,5 @@
-import React from "react";
+import AOS from "aos";
+import { useEffect } from "react";
 
 export default function CustomerReviews() {
   const data = [
@@ -15,10 +16,20 @@ export default function CustomerReviews() {
       review: "Great service and delicious food. Highly recommended.",
     },
   ];
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+
+    AOS.refreshHard();
+  }, [data]);
+
   return (
-    <section className=" py-12 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-700">
+    <section className="pb-5 md:pb-10 bg-primary">
+      <div className="w-11/12 mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-4 lg:mb-8 text-heading">
           What Our Customers Say
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -26,6 +37,7 @@ export default function CustomerReviews() {
             <div
               key={index}
               className="bg-white shadow-2xl rounded-lg p-6 flex flex-col items-center text-center"
+              data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
             >
               <img
                 src={`https://i.pravatar.cc/150?img=${index + 1}`}

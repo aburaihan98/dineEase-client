@@ -1,4 +1,5 @@
-import React from "react";
+import AOS from "aos";
+import React, { useEffect } from "react";
 
 export default function ChefsSpecial() {
   const data = [
@@ -24,17 +25,28 @@ export default function ChefsSpecial() {
       img: "https://cdn.pixabay.com/photo/2019/03/14/20/13/chefs-4055824_640.jpg",
     },
   ];
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+
+    AOS.refreshHard();
+  }, [data]);
+
   return (
-    <section className="bg-gradient-to-r from-green-400 to-blue-500 py-12 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8 text-white">
+    <section className="bg-gradient-to-r from-green-400 to-blue-500 py-5 md:py-10">
+      <div className="w-11/12 mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-4 lg:mb-8 text-white">
           Today's Chef's Special
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data?.map((special) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+          {data?.map((special, index) => (
             <div
               key={special.id}
               className="bg-white shadow-md rounded-lg overflow-hidden"
+              data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
             >
               <img
                 src={special.img}
