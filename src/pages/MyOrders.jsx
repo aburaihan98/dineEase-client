@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import AOS from "aos";
 import moment from "moment";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { AuthContext } from "../provider/AuthProvider";
@@ -46,6 +47,15 @@ const MyOrders = () => {
     mutation.mutate(orderId);
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    AOS.refreshHard();
+  }, [orders]);
+
   if (isLoading) {
     return (
       <div className="text-center py-10">
@@ -65,51 +75,54 @@ const MyOrders = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-center mb-6 text-gray-600">
-        My Orders
-      </h2>
-      {orders.length === 0 ? (
-        <p className="text-center text-2xl font-bold text-gray-600">
-          You have no orders yet.
-        </p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {orders.map((order) => (
-            <div
-              key={order._id}
-              className="p-4 bg-white rounded-lg shadow-md border border-gray-200"
-            >
-              <img
-                src={order.foodImage}
-                alt={order.foodName}
-                className="h-40 w-full object-cover rounded-lg mb-4"
-              />
-              <h3 className="text-xl font-semibold mb-2">{order.foodName}</h3>
-              <p className="text-gray-600">
-                <strong>Price:</strong> ${order.price.toFixed(2)}
-              </p>
-              <p className="text-gray-600">
-                <strong>Quantity:</strong> ${order.quantity}
-              </p>
-              <p className="text-gray-600">
-                <strong>Owner:</strong> {order.foodOwner}
-              </p>
-              <p className="text-gray-600">
-                <strong>Ordered On:</strong>{" "}
-                {moment(order.buyingDate).format("MMMM Do YYYY, h:mm:ss a")}
-              </p>
-              <button
-                onClick={() => handleDelete(order._id)}
-                className="mt-4 w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-red-700 transition"
+    <section className="py-5 md:py-10 bg-primary">
+      <div className="w-11/12 mx-auto">
+        <h2 className="text-2xl font-bold text-center mb-4 lg:mb-8 text-gray-600">
+          My Orders
+        </h2>
+        {orders.length === 0 ? (
+          <p className="text-center text-2xl font-bold text-gray-600">
+            You have no orders yet.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {orders.map((order, index) => (
+              <div
+                key={order._id}
+                className="p-4 bg-white rounded-lg shadow-md border border-gray-200"
+                data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
               >
-                {mutation.isLoading ? "Deleting..." : "Delete Order"}
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+                <img
+                  src={order.foodImage}
+                  alt={order.foodName}
+                  className="h-40 w-full object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-xl font-semibold mb-2">{order.foodName}</h3>
+                <p className="text-gray-600">
+                  <strong>Price:</strong> ${order.price.toFixed(2)}
+                </p>
+                <p className="text-gray-600">
+                  <strong>Quantity:</strong> ${order.quantity}
+                </p>
+                <p className="text-gray-600">
+                  <strong>Owner:</strong> {order.foodOwner}
+                </p>
+                <p className="text-gray-600">
+                  <strong>Ordered On:</strong>{" "}
+                  {moment(order.buyingDate).format("MMMM Do YYYY, h:mm:ss a")}
+                </p>
+                <button
+                  onClick={() => handleDelete(order._id)}
+                  className="mt-4 w-full bg-secondary text-white py-2 px-4 rounded-lg transition"
+                >
+                  {mutation.isLoading ? "Deleting..." : "Delete Order"}
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
   );
 };
 

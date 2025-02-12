@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import Loading from "../Loading";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Login() {
@@ -57,70 +58,70 @@ export default function Login() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
-    <div className=" px-4 flex justify-center items-center min-h-screen">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">Login now!</h1>
-        </div>
-        <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
-          <form onSubmit={handleLoginSubmit} className="space-y-6">
-            <div className="form-control">
-              <label className="label mb-2 text-sm text-gray-700">Email</label>
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
-                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
+    <section className="py-5 md:py-10 bg-primary font-semibold">
+      <div className="px-4 flex justify-center items-center">
+        <div className="w-full max-w-md">
+          <div className="text-center mb-4 lg:mb-8">
+            <h1 className="text-2xl font-bold text-secondary">Login now!</h1>
+          </div>
+          <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
+            <form onSubmit={handleLoginSubmit} className="">
+              <div className="form-control">
+                <label className="label mb-2 text-sm text-gray-700">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
 
-            <div className="form-control">
-              <label className="label mb-2 text-sm text-gray-700">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                className="input input-bordered w-full p-3  text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
+              <div className="form-control">
+                <label className="label mb-2 text-sm text-gray-700">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="input input-bordered w-full p-3  text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
 
-            <div className="form-control mt-6">
-              <button className="btn bg-primary w-full py-3 rounded-lg text-white font-semibold hover:bg-red-700">
-                Login
-              </button>
+              <div className="form-control mt-6">
+                <button className="btn bg-secondary w-full py-3 rounded-lg text-white font-semibold hover:bg-secondary hover:text-white">
+                  Login
+                </button>
+              </div>
+            </form>
+            <button
+              onClick={handleGoogleLogin}
+              className="btn bg-secondary text-white w-full  mt-4 border border-primaryColor rounded-md flex items-center justify-center gap-2 text-primaryColor font-semibold text-xl mb-2 hover:bg-secondary hover:text-white"
+            >
+              <FaGoogle />
+              Login with Google
+            </button>
+            <div className="text-center mt-6">
+              <p className="text-sm text-gray-600">
+                Don't have an account?{" "}
+                <Link to="/register" className="text-secondary font-semibold">
+                  Register here
+                </Link>
+              </p>
             </div>
-          </form>
-          <button
-            onClick={handleGoogleLogin}
-            className="btn bg-primary text-white w-full  mt-4 border border-primaryColor rounded-md flex items-center justify-center gap-2 text-primaryColor font-semibold text-xl mb-2 hover:bg-red-700 "
-          >
-            <FaGoogle />
-            Login with Google
-          </button>
-          <div className="text-center mt-6">
-            <p className="text-sm text-gray-600">
-              Don't have an account?{" "}
-              <Link to="/register" className="text-primary font-semibold">
-                Register here
-              </Link>
-            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

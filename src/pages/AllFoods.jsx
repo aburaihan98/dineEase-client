@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import AOS from "aos";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Error from "../Error";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AllFoods = () => {
@@ -72,24 +73,6 @@ const AllFoods = () => {
     }
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="text-center py-10">
-  //       <p className="text-2xl font-bold">Loading...</p>
-  //     </div>
-  //   );
-  // }
-
-  if (error) {
-    return (
-      <div className="text-center py-10">
-        <p className="text-lg font-semibold text-red-500">
-          Something went wrong! Please try again.
-        </p>
-      </div>
-    );
-  }
-
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -97,7 +80,15 @@ const AllFoods = () => {
     });
 
     AOS.refreshHard();
-  }, []);
+  }, [foods]);
+
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
+
+  if (error) {
+    return <Error />;
+  }
 
   return (
     <div className="bg-primary">
@@ -205,7 +196,7 @@ const AllFoods = () => {
             </div>
           ))
         ) : (
-          <p className="text-center col-span-3 text-gray-700">
+          <p className="text-center text-2xl font-bold col-span-3 text-gray-700">
             No food items found.
           </p>
         )}
@@ -213,7 +204,7 @@ const AllFoods = () => {
       {/* Pagination */}
       <div className="flex flex-col items-center gap-4 p-4 bg-primary rounded-lg shadow-md">
         <p className="text-lg font-medium text-heading">
-          Current page:{" "}
+          Current page:
           <span className="font-bold text-secondary">{currentPage}</span>
         </p>
         <div className="flex items-center gap-2">

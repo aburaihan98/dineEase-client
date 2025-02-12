@@ -36,7 +36,7 @@ export default function CustomerReviews() {
           {data?.map((customer, index) => (
             <div
               key={index}
-              className="bg-white shadow-2xl rounded-lg p-6 flex flex-col items-center text-center"
+              className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center"
               data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
             >
               <img

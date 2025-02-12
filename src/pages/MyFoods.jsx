@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import AOS from "aos";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Error from "../Error";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Loading from "../Loading";
 import { AuthContext } from "../provider/AuthProvider";
 
 const MyFoods = () => {
@@ -9,7 +12,6 @@ const MyFoods = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
 
-  // Fetch the food items using TanStack Query (react-query)
   const {
     data: foodItems = [],
     isLoading,
@@ -27,27 +29,27 @@ const MyFoods = () => {
     navigate(`/update-food/${foodId}`);
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    AOS.refreshHard();
+  }, [foodItems]);
+
   if (isLoading) {
-    return (
-      <div className="text-center py-10">
-        <p className="text-2xl font-bold">Loading...</p>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (isError) {
-    return (
-      <div className="text-center py-10">
-        <p className="text-lg font-semibold text-red-500">
-          Something went wrong! Please try again.
-        </p>
-      </div>
-    );
+    return <Error />;
   }
+
   return (
-    <div className="py-6 lg:py-12">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-semibold text-center mb-8 text-gray-700">
+    <div className="py-6 lg:py-12 bg-primary">
+      <div className="w-11/12 mx-auto">
+        <h2 className="text-2xl font-bold text-center mb-4 lg:mb-8 text-heading">
           My Food Items
         </h2>
         {/* Show food items in a grid of cards */}
@@ -57,8 +59,12 @@ const MyFoods = () => {
               You haven't added any food items yet.
             </p>
           ) : (
-            foodItems.map((food) => (
-              <div key={food._id} className="bg-white shadow-md rounded-lg p-6">
+            foodItems.map((food, index) => (
+              <div
+                key={food._id}
+                data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
+                className="bg-white shadow-md rounded-lg p-6"
+              >
                 <img
                   src={food.foodImage}
                   alt={food.foodName}
@@ -81,7 +87,7 @@ const MyFoods = () => {
                 {/* Update button */}
                 <button
                   onClick={() => handleUpdate(food._id)}
-                  className="mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-red-700"
+                  className="mt-4 bg-secondary text-white px-4 py-2 rounded-lg "
                 >
                   Update
                 </button>

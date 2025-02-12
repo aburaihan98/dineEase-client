@@ -18,7 +18,7 @@ export default function NavBar() {
   };
 
   return (
-    <div className="sticky top-0 z-50 bg-primary text-secondary font-semibold text-[15px]">
+    <div className="sticky top-0 z-50 py-2 bg-primary text-secondary font-semibold text-[15px]">
       <div className="navbar px-0 w-11/12 m-auto">
         <div className="navbar-start">
           {/* Dropdown for Mobile */}
@@ -41,12 +41,12 @@ export default function NavBar() {
             </div>
             <ul
               tabIndex={0}
-              className="bg-primary text-white menu menu-sm dropdown-content mt-3 w-52 rounded-box p-2 shadow z-[1]"
+              className="bg-primary menu menu-sm dropdown-content mt-3 w-52 rounded-box p-2 shadow z-[1]"
             >
               <li>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "text-yellow-color" : ""
+                    isActive ? " pb-1 border-b-2 border-yellow-color" : ""
                   }
                   to="/"
                 >
@@ -54,11 +54,59 @@ export default function NavBar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/all-foods">All Foods</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " pb-1 border-b-2 border-yellow-color" : ""
+                  }
+                  to="/all-foods"
+                >
+                  All Foods
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/gallery">Gallery</NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " pb-1 border-b-2 border-yellow-color" : ""
+                  }
+                  to="/gallery"
+                >
+                  Gallery
+                </NavLink>
               </li>
+              {user && (
+                <>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? " pb-1 border-b-2 border-yellow-color" : ""
+                      }
+                      to="/my-foods"
+                    >
+                      My Foods
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? " pb-1 border-b-2 border-yellow-color" : ""
+                      }
+                      to="/add-food"
+                    >
+                      Add Food
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? " pb-1 border-b-2 border-yellow-color" : ""
+                      }
+                      to="/my-orders"
+                    >
+                      My Orders
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           {/* Logo */}
@@ -132,7 +180,14 @@ export default function NavBar() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/my-orders pb-1 border-b-2 border-yellow-color">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-yellow-color pb-1 border-b-2 border-yellow-color"
+                        : ""
+                    }
+                    to="/my-orders"
+                  >
                     My Orders
                   </NavLink>
                 </li>
@@ -172,7 +227,10 @@ export default function NavBar() {
               </ul>
             </div>
           ) : (
-            <Link to="/login" className="btn">
+            <Link
+              to="/login"
+              className="btn bg-secondary text-white font-semibold hover:bg-secondary hover:text-white"
+            >
               Login
             </Link>
           )}

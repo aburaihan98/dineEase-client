@@ -49,137 +49,166 @@ const AddFoodItem = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 text-primary">
-      <h2 className="text-2xl font-bold mb-4">Add Food Item</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="foodName" className="block  text-lg">
-            Food Name
-          </label>
-          <input
-            id="foodName"
-            name="foodName"
-            type="text"
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
+    <section className="py-5 md:py-10 bg-primary ">
+      <div className="w-11/12 m-auto">
+        <h2 className="text-2xl text-heading text-center font-bold mb-4 lg:mb-8">
+          Add Food Item
+        </h2>
+        <form onSubmit={handleSubmit} className="">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+            <div className="space-y-2">
+              <div>
+                <label
+                  htmlFor="foodName"
+                  className="block  text-lg font-medium"
+                >
+                  Food Name
+                </label>
+                <input
+                  id="foodName"
+                  name="foodName"
+                  type="text"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
 
-        <div>
-          <label htmlFor="foodImage" className="block text-lg">
-            Food Image URL
-          </label>
-          <input
-            id="foodImage"
-            name="foodImage"
-            type="text"
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
+              <div>
+                <label
+                  htmlFor="foodImage"
+                  className="block text-lg font-medium"
+                >
+                  Food Image URL
+                </label>
+                <input
+                  id="foodImage"
+                  name="foodImage"
+                  type="text"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
 
-        <div>
-          <label htmlFor="foodCategory" className="block text-lg">
-            Food Category
-          </label>
-          <input
-            id="foodCategory"
-            name="foodCategory"
-            type="text"
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
+              <div>
+                <label
+                  htmlFor="foodCategory"
+                  className="block text-lg font-medium"
+                >
+                  Food Category
+                </label>
+                <input
+                  id="foodCategory"
+                  name="foodCategory"
+                  type="text"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
 
-        <div>
-          <label htmlFor="quantity" className="block text-lg">
-            Quantity
-          </label>
-          <input
-            id="quantity"
-            name="quantity"
-            type="number"
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
+              <div>
+                <label htmlFor="quantity" className="block text-lg font-medium">
+                  Quantity
+                </label>
+                <input
+                  id="quantity"
+                  name="quantity"
+                  type="number"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div>
+                <label htmlFor="price" className="block text-lg font-medium">
+                  Price
+                </label>
+                <input
+                  id="price"
+                  name="price"
+                  type="number"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            <div className=" space-y-2">
+              <div>
+                <label
+                  htmlFor="addByName"
+                  className="block text-lg font-medium"
+                >
+                  Add By (Name)
+                </label>
+                <input
+                  id="addByName"
+                  name="addByName"
+                  type="text"
+                  defaultValue={user?.displayName}
+                  disabled={true}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
 
-        <div>
-          <label htmlFor="price" className="block text-lg">
-            Price
-          </label>
-          <input
-            id="price"
-            name="price"
-            type="number"
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
+              <div>
+                <label
+                  htmlFor="addByEmail"
+                  className="block text-lg font-medium"
+                >
+                  Add By (Email)
+                </label>
+                <input
+                  id="addByEmail"
+                  name="addByEmail"
+                  type="email"
+                  defaultValue={user?.email}
+                  disabled={true}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
 
-        <div>
-          <label htmlFor="addByName" className="block text-lg">
-            Add By (Name)
-          </label>
-          <input
-            id="addByName"
-            name="addByName"
-            type="text"
-            defaultValue={user?.displayName}
-            disabled={true}
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
+              <div>
+                <label
+                  htmlFor="foodOrigin"
+                  className="block text-lg font-medium"
+                >
+                  Food Origin (Country)
+                </label>
+                <input
+                  id="foodOrigin"
+                  name="foodOrigin"
+                  type="text"
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
 
-        <div>
-          <label htmlFor="addByEmail" className="block text-lg">
-            Add By (Email)
-          </label>
-          <input
-            id="addByEmail"
-            name="addByEmail"
-            type="email"
-            defaultValue={user?.email}
-            disabled={true}
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="foodOrigin" className="block text-lg">
-            Food Origin (Country)
-          </label>
-          <input
-            id="foodOrigin"
-            name="foodOrigin"
-            type="text"
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="shortDescription" className="block text-lg">
-            Short Description
-          </label>
-          <textarea
-            id="shortDescription"
-            name="shortDescription"
-            required
-            className="w-full p-2 border border-gray-300 rounded-md"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full py-3 px-6 bg-primary text-[#ffffff] rounded-md hover:bg-red-700 transition duration-300"
-        >
-          Add Item
-        </button>
-      </form>
-    </div>
+              <div>
+                <label
+                  htmlFor="shortDescription"
+                  className="block text-lg font-medium"
+                >
+                  Short Description
+                </label>
+                <textarea
+                  id="shortDescription"
+                  name="shortDescription"
+                  rows="4"
+                  required
+                  className="w-full py-[11px] px-2 border border-gray-300 rounded-md"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="w-full py-3 px-6 mt-4 bg-secondary text-[#ffffff] rounded-md transition duration-300"
+          >
+            Add Item
+          </button>
+        </form>
+      </div>
+    </section>
   );
 };
 

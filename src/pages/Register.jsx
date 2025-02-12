@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import Loading from "../Loading";
 import { AuthContext } from "../provider/AuthProvider";
 
 export default function Register() {
@@ -76,83 +77,85 @@ export default function Register() {
   }, []);
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
-    <div className=" px-4 flex justify-center items-center py-6 md-py-8 lg:py-12">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-primary mb-4">
-            Register now!
-          </h1>
-        </div>
-        <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
-          <form onSubmit={handleRegisterSubmit} className="space-y-6">
-            <div className="form-control">
-              <label className="label mb-2 text-sm text-gray-700">Name</label>
-              <input
-                type="text"
-                placeholder="Name"
-                name="name"
-                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label mb-2 text-sm text-gray-700">Photo</label>
-              <input
-                type="text"
-                placeholder="Phot url"
-                name="photo"
-                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label mb-2 text-sm text-gray-700">Email</label>
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label mb-2 text-sm text-gray-700">
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                required
-              />
-            </div>
+    <section className="py-5 md:py-10 bg-primary font-semibold">
+      <div className="px-4 flex justify-center items-center">
+        <div className="w-full max-w-md">
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold text-secondary mb-4">
+              Register now!
+            </h1>
+          </div>
+          <div className="card bg-base-100 shadow-2xl rounded-lg p-8">
+            <form onSubmit={handleRegisterSubmit} className="">
+              <div className="form-control">
+                <label className="label mb-2 text-sm text-gray-700">Name</label>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label mb-2 text-sm text-gray-700">
+                  Photo
+                </label>
+                <input
+                  type="text"
+                  placeholder="Phot url"
+                  name="photo"
+                  className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label mb-2 text-sm text-gray-700">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label mb-2 text-sm text-gray-700">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="input input-bordered w-full p-3 text-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
 
-            <div className="form-control mt-6">
-              <button className="btn bg-primary w-full py-3  rounded-lg text-white font-semibold hover:bg-red-700">
-                Login
-              </button>
-            </div>
-          </form>
+              <div className="form-control mt-6">
+                <button className="btn bg-secondary w-full py-3  rounded-lg text-white font-semibold hover:bg-secondary hover:text-white">
+                  Login
+                </button>
+              </div>
+            </form>
 
-          <div className="text-center mt-6">
-            <p className="text-sm text-gray-600">
-              Allready Have An Account ?{" "}
-              <Link to="/login" className="text-primary font-semibold">
-                Login
-              </Link>
-            </p>
+            <div className="text-center mt-6">
+              <p className="text-sm text-gray-600">
+                Allready Have An Account ?{" "}
+                <Link to="/login" className="text-secondary font-semibold">
+                  Login
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
