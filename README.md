@@ -33,25 +33,30 @@ https://dine-ease-aacad.web.app/
 
 - **Gallery Infinite Scrolling**: Infinite scrolling for gallery images.
 
-## Technologies Used
+## Technologies Used  
 
-- React.js
-- Node.js
-- MongoDB
-- Express.js
-- Firebase Authentication
-- React Router
-- React Toastify
-- Sweetalert2
-- Framer Motion
-- Lottie-web
-- Moment.js
-- Axios
-- React Query (Tanstack)
-- React Rating Stars Component
-- React Infinite Scroll Component
-- React Lightbox
-- FontAwesome
+### Frontend:  
+- **React.js** – Component-based UI development  
+- **React Router** – Client-side navigation  
+- **Firebase Authentication** – User authentication (Email/Google login)  
+- **React Toastify** – Notifications  
+- **Sweetalert2** – Interactive alerts  
+- **Framer Motion** – Animations  
+- **Lottie-web** – Lottie animations  
+- **Moment.js** – Date formatting  
+- **Axios** – API requests  
+- **React Query (TanStack)** – State & data fetching management  
+- **React Rating Stars Component** – User rating system  
+- **React Infinite Scroll Component** – Infinite scrolling feature  
+- **React Lightbox** – Image preview functionality  
+- **FontAwesome** – Icon library  
+
+### Backend:  
+- **Node.js** – Server-side runtime  
+- **Express.js** – Backend framework  
+- **MongoDB** – NoSQL database  
+- **Firebase Authentication** – User authentication management  
+- **Axios** – API handling  
 
 ## Dependencies
 
