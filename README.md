@@ -4,9 +4,8 @@ Dine-Ease is a full-stack restaurant management platform designed to improve the
 
 ![EquiSports Screenshot](https://i.postimg.cc/CxDqmzsR/Screenshot-56.png)
 
-## Project Overview
-
-Dine-Ease offers a smooth restaurant management experience with features like food CRUD operations, user authentication (email/password & social login), food purchases, gallery management, and more. It is designed to be fully responsive and offers features like JWT authentication, theme customization (dark/light mode), and infinite scrolling on the gallery page.
+## live project links:
+https://dine-ease-aacad.web.app/
 
 ## Key Features
 
@@ -119,5 +118,4 @@ npm install
 ### 4. Just run this command
 npm run dev
 
-## live project links:
-https://dine-ease-aacad.web.app/
+
