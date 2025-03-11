@@ -9,52 +9,30 @@ https://dine-ease-aacad.web.app/
 
 ## Key Features
 
-- **User Authentication:**
-  - Email/password-based login and registration.
-  - Google login integration.
-  - Password verification (uppercase, lowercase, and minimum length).
+- **User Authentication**: Email/password-based login and registration. Google login integration. Password verification (uppercase, lowercase, and minimum length).
 
-- **Food Management:**
-  - Add, Update, and Delete food items.
-  - View food details on the "All Foods" page.
-  - Filter food items using MongoDB’s `$and` operators.
+- **Food Management**:Add, Update, and Delete food items. View food details on the "All Foods" page. Filter food items using MongoDB’s `$and` operators.
 
-- **Food Purchase:**
-  - Users can purchase food with quantity restrictions.
-  - Display purchase count for each food item.
 
-- **Gallery Section:**
-  - 48 static images with image lightbox functionality using `react-lightbox`.
+- **Food Purchase** : Users can purchase food with quantity restrictions. Display purchase count for each food item.
 
-- **User Profile:**
-  - Display logged-in user’s profile image and name.
-  - Manage user-specific food items and orders.
+- **Gallery Section**: 48 static images with image lightbox functionality using `react-lightbox`.
+- 
+- **User Profile**: Display logged-in user’s profile image and name. Manage user-specific food items and orders.
 
-- **Responsive Design:**
-  - Fully responsive design for mobile, tablet, and desktop.
+- **Responsive Design **: Fully responsive design for mobile, tablet, and desktop.
 
-- **Theme Customization:**
-  - Dark/Light theme toggle functionality.
+- **Search and Filter:**: Search food items by name. Filter food items based on price and origin.
 
-- **Search and Filter:**
-  - Search food items by name.
-  - Filter food items based on price and origin.
+- **Pagination**: Pagination for food items with 9 items per page.
 
-- **Pagination:**
-  - Pagination for food items with 9 items per page.
+- **JWT Authentication**: JWT tokens for secure private routes.
 
-- **JWT Authentication:**
-  - JWT tokens for secure private routes.
+- **Toast & Sweetalert2 Notifications**: Display notifications for login, registration, and food purchase actions.
 
-- **Toast & Sweetalert2 Notifications:**
-  - Display notifications for login, registration, and food purchase actions.
+- **Food Quantity Management:**: Restrict purchases based on available food quantity. Notify users when a food item is out of stock.
 
-- **Food Quantity Management:**
-  - Restrict purchases based on available food quantity.
-  - Notify users when a food item is out of stock.
-
-- **Gallery Infinite Scrolling:**
-  - Infinite scrolling for gallery images.
+- **Gallery Infinite Scrolling:**: Infinite scrolling for gallery images.
 
 ## Technologies Used
 
