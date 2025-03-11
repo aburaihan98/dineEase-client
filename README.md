@@ -7,8 +7,6 @@ Dine-Ease is a full-stack restaurant management platform designed to improve the
 ## live project links:
 https://dine-ease-aacad.web.app/
 
----
-
 ## Key Features
 
 - **User Authentication**: Email/password-based login and registration. Google login integration. Password verification (uppercase, lowercase, and minimum length).
@@ -34,8 +32,6 @@ https://dine-ease-aacad.web.app/
 - **Food Quantity Management**: Restrict purchases based on available food quantity. Notify users when a food item is out of stock.
 
 - **Gallery Infinite Scrolling**: Infinite scrolling for gallery images.
-
----
 
 ## Technologies Used
 
