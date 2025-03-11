@@ -2,7 +2,7 @@
 
 Dine-Ease is a full-stack restaurant management platform designed to improve the efficiency of food ordering and inventory management. Built using the MERN stack, the website provides functionalities like food management, user authentication, and a seamless user experience for both customers and staff.
 
-![EquiSports Screenshot](https://i.postimg.cc/CxDqmzsR/Screenshot-56.png)
+![EquiSports Screenshot](https://i.ibb.co.com/fYFrvB5J/dineease.png)
 
 ## live project links:
 https://dine-ease-aacad.web.app/
